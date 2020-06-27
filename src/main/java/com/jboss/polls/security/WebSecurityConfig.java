@@ -1,6 +1,6 @@
-package com.jboss.blog.security;
+package com.jboss.polls.security;
 
-import com.jboss.blog.services.MyUserDetailsService;
+import com.jboss.polls.service.MyUserDetailsService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -18,7 +18,10 @@ import org.springframework.security.web.authentication.UsernamePasswordAuthentic
 
 @Configuration
 @EnableWebSecurity
-@EnableGlobalMethodSecurity(prePostEnabled = true)
+@EnableGlobalMethodSecurity(
+        securedEnabled = true,
+        jsr250Enabled = true,
+        prePostEnabled = true)
 public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 
     @Autowired
@@ -48,8 +51,18 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 
     @Override
     protected void configure(HttpSecurity httpSecurity) throws Exception {
-        httpSecurity.csrf().disable()
-                .authorizeRequests().antMatchers("/api/v1/blog/authenticate","/api/v1/blog/create-account", "/api/v1/blog/login", "/api/v1/blog/register-admin", "/api/v1/blog/add-role").permitAll()
+        httpSecurity.cors().and().csrf().disable()
+                .authorizeRequests().antMatchers(
+                        "/",
+                                    "/favicon.ico",
+                                    "/**/*.png",
+                                    "/**/*.gif",
+                                    "/**/*.svg",
+                                    "/**/*.jpg",
+                                    "/**/*.html",
+                                    "/**/*.css",
+                                    "/**/*.js",
+                                    "/api/auth/**","/api/user/checkUsernameAvailability", "/api/user/checkEmailAvailability", "/api/polls/**", "/api/users/**").permitAll()
                 .anyRequest().authenticated().and()
                 .exceptionHandling().authenticationEntryPoint(jwtAuthenticationEntryPoint).and().sessionManagement()
                 .sessionCreationPolicy(SessionCreationPolicy.STATELESS);

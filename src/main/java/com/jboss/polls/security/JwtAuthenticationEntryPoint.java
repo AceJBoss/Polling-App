@@ -1,4 +1,4 @@
-package com.jboss.blog.security;
+package com.jboss.polls.security;
 
 import org.springframework.security.core.AuthenticationException;
 import org.springframework.security.web.AuthenticationEntryPoint;

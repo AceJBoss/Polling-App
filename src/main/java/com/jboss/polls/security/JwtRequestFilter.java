@@ -1,6 +1,6 @@
-package com.jboss.blog.security;
+package com.jboss.polls.security;
 
-import com.jboss.blog.services.MyUserDetailsService;
+import com.jboss.polls.service.MyUserDetailsService;
 import io.jsonwebtoken.ExpiredJwtException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;

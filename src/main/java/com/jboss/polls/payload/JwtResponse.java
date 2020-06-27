@@ -1,55 +1,25 @@
-package com.logistics.checklist.payloads;
+package com.jboss.polls.payload;
+
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 
 import java.io.Serializable;
 
+@Data
+@AllArgsConstructor
+@NoArgsConstructor
 public class JwtResponse implements Serializable {
 
     private static final long serialVersionUID = -8091879091924046844L;
 
-    private final String jwttoken;
-    private String fullname;
+    private String jwttoken;
+    private Long id;
+    private String name;
     private String username;
     private String email;
-    private String phone;
-    private String address;
+    private String password;
 
-
-    public JwtResponse(String jwttoken, String fullname, String username, String email, String phone, String address) {
-
-        this.jwttoken = jwttoken;
-        this.fullname = fullname;
-        this.username = username;
-        this.email = email;
-        this.phone = phone;
-        this.address = address;
-
-    }
-
-    public String getToken() {
-
-        return this.jwttoken;
-
-    }
-
-    public String getFullname(){
-        return this.fullname;
-    }
-
-    public String getUsername(){
-        return this.username;
-    }
-
-    public String getEmail(){
-        return this.email;
-    }
-
-    public String getPhone(){
-        return this.phone;
-    }
-
-    public String getAddress(){
-        return this.address;
-    }
 
 }
 
