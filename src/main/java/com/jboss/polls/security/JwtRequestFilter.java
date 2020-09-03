@@ -44,10 +44,10 @@ public class JwtRequestFilter extends OncePerRequestFilter {
             }
         }
          else if (requestTokenHeader == null){
-                logger.info("Does not provide Authorization Header");
+                logger.info("Does not provide Authorization Header.");
             }
          else if (!requestTokenHeader.startsWith("Bearer ")){
-             logger.warn("JWT Token does not begin with Bearer");
+             logger.warn("JWT Token does not begin with Bearer.");
         }
 
         if (username != null && SecurityContextHolder.getContext().getAuthentication() == null) {
